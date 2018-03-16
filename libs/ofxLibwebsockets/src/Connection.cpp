@@ -97,7 +97,6 @@ namespace ofxLibwebsockets {
       //drop out frames while processing
       if (messages_binary.size() > 0)
         return;
-      ofLog() << "add bin";
 
         int n = -1;
         
@@ -119,7 +118,6 @@ namespace ofxLibwebsockets {
     
     //--------------------------------------------------------------
     void Connection::update(){
-      ofLog() << "update bin " << messages_binary.size();
         // process standard ws messages
         if ( messages_text.size() > 0 && idle ){
             // grab first packet
