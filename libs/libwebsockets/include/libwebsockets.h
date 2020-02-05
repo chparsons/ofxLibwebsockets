@@ -29,9 +29,10 @@ extern "C" {
 #else
 #include <stdarg.h>
 #endif
-
-/* That's a bad idea since it will leak all internal defines outside */
+	
+#ifdef CMAKE_BUILD
 #include "lws_config.h"
+#endif
 
 #if defined(WIN32) || defined(_WIN32)
 
@@ -1166,7 +1167,6 @@ enum pending_timeout {
 	PENDING_TIMEOUT_SSL_ACCEPT,
 	PENDING_TIMEOUT_HTTP_CONTENT,
 	PENDING_TIMEOUT_AWAITING_CLIENT_HS_SEND,
-	PENDING_FLUSH_STORED_SEND_BEFORE_CLOSE,
 };
 
 LWS_VISIBLE LWS_EXTERN void

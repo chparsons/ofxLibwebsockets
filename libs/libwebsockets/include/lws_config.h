@@ -1,9 +1,7 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
-#ifndef NDEBUG
-	#ifndef _DEBUG
-		#define _DEBUG
-	#endif
+#ifndef WIN32
+#define _DEBUG
 #endif
 
 /* Define to 1 to use CyaSSL as a replacement for OpenSSL. 
@@ -14,7 +12,7 @@
 #define LWS_LIBRARY_VERSION "1.4"
 
 /* The current git commit hash that we're building from */
-#define LWS_BUILD_HASH "3ae1bad"
+#define LWS_BUILD_HASH "16fb0132"
 
 /* Build with OpenSSL support */
 #define LWS_OPENSSL_SUPPORT
@@ -41,7 +39,7 @@
 /* #undef LWS_LATENCY */
 
 /* Don't build the daemonizeation api */
-#define LWS_NO_DAEMONIZE
+/* #undef LWS_NO_DAEMONIZE */
 
 /* Build without server support */
 /* #undef LWS_NO_SERVER */
@@ -127,11 +125,7 @@
 #define HAVE_SYS_TYPES_H
 
 /* Define to 1 if you have the <unistd.h> header file. */
-#if defined(__APPLE__) && !defined(__IOS__)
-#define HAVE_UNISTD_H 1
-#else
 #define HAVE_UNISTD_H
-#endif
 
 /* Define to 1 if you have the `vfork' function. */
 #define HAVE_VFORK
@@ -151,6 +145,9 @@
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
    */
 #undef LT_OBJDIR // We're not using libtool
+
+/* Define to 1 if you have the ANSI C header files. */
+#define STDC_HEADERS
 
 /* Version number of package */
 #define VERSION

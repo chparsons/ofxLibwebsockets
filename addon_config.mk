@@ -106,12 +106,17 @@ vs:
 
 
 linuxarmv6l:
-	ADDON_LDFLAGS = -lssl
-	# ADDON_SOURCES_EXCLUDE = libs/libwebsockets/include/win32port/%
-	ADDON_LIBS = libs/libwebsockets/lib/linuxarmv6l/libwebsockets.a
+	# ADDON_LDFLAGS = -lssl
+	# ADDON_LDFLAGS += -lcrypto
+	ADDON_INCLUDES += libs/openssl/include
+	ADDON_LIBS = libs/openssl/lib/linuxarmv6l/libcrypto.a
+	ADDON_LIBS += libs/openssl/lib/linuxarmv6l/libssl.a
+	ADDON_LIBS += libs/libwebsockets/lib/linuxarmv6l/libwebsockets.a
+	ADDON_LIBS += /usr/lib/arm-linux-gnueabihf/libssl.so.1.0.2
+	ADDON_LIBS += /usr/lib/arm-linux-gnueabihf/libcrypto.so.1.0.2
 linuxarmv7l:
 	ADDON_LDFLAGS = -lssl
-	# ADDON_SOURCES_EXCLUDE = libs/libwebsockets/include/win32port/%
+	ADDON_LDFLAGS += -lcrypto
 	ADDON_LIBS = libs/libwebsockets/lib/linuxarmv7l/libwebsockets.a
 	
 android/armeabi:	
